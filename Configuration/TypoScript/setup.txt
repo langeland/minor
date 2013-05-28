@@ -1,0 +1,67 @@
+/*
+config.less {
+	variables {
+		color = pink
+		base = 960px
+	}
+}
+
+
+page.less {
+	variables {
+		color = blue
+		width = 100px
+	}
+}
+
+
+
+
+page.includeCSS {
+	file1 = fileadmin/minor/lessfile.less
+	file1.media = print
+	file1.variables {
+		color = pink
+		base = 450px
+	}
+	
+	file2 = fileadmin/minor/lessfile2.less
+	file2.variables {
+
+	}
+}
+
+plugin.tx_tcgallery {
+
+	includeCSS {
+		file1 = typo3conf/ext/gallery/Resources/Public/Less/Plugin.less
+		file1.media = print
+		file1.variables {
+			color = pink
+			base = 450px
+		}
+		
+		file2 = fileadmin/minor/lessfile2.less
+		file2.variables {
+	
+		}
+	}
+}
+*/
+
+
+plugin.minor.compiler = USER
+plugin.minor.compiler{
+	userFunc = tx_extbase_core_bootstrap->run
+	extensionName = Minor
+	controller = Minor
+	pluginName = Minor
+	switchableControllerActions {
+		Less {
+			1 = base
+		}
+	}
+}
+
+#Listening for LESS on all content plugins
+tt_content.list.90 < plugin.minor.compiler
